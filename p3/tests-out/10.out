@@ -1,0 +1,13 @@
+ls > output.9 > output.10
+exit
+malloc
+free
+free
+malloc
+malloc
+malloc
+free
+free
+free
+free
+free

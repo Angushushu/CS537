@@ -1,0 +1,18 @@
+exit bad
+exit
+malloc
+malloc
+malloc
+free
+free
+free
+free
+free
+malloc
+malloc
+malloc
+free
+free
+free
+free
+free

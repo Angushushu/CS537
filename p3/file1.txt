@@ -1,0 +1,8 @@
+/bin/ls
+
+/bin/ls   -l
+  output &
+nonexistentjob 
+output    -o 10 &
+   output -o 20   &
+

@@ -1,0 +1,68 @@
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
+#include "unistd.h"
+
+struct job {
+    struct job* pre;
+    char* line;
+    int jid;
+    struct job* next;
+};
+
+char* combstr(char* str1, char* str2) {
+    char* comb = malloc(strlen(str1) + strlen(str2) + 1);
+    strcpy(comb, str1);
+    strcat(comb, str2);
+    return comb;
+}
+
+void loop(FILE* in) {
+    char ln[512];
+    int jidcnt = 0;
+    struct job* jobh = NULL;
+    struct job* jobn = NULL;
+    while(1) {
+        write(1, "mysh> ", 6*sizeof(char));
+	fgets(ln, 512, in);
+        write(1, &ln, strlen(ln)*sizeof(char));//
+	char* jobln = "";
+	char* word = strtok(ln, " ");
+	int notfirstime = 0;
+	while(word != NULL) {
+	    if(notfirstime) {
+	        jobln = combstr(jobln, " ");
+		notfirstime = 1;
+	    }
+	    jobln = combstr(jobln, word);
+	    word = strtok(NULL, " ");
+	}
+	if(jidcnt == 0){
+	    struct job job0;
+	    job0.pre = NULL;
+	    job0.line = jobln;
+            job0.jid = jidcnt;
+	    jobh = &job0;
+	    jobn = &job0;
+	}else{
+	    struct job jobnext;
+	    jobnext.pre = jobn;
+	    jobnext.line = jobln;
+	    jobnext.jid = jidcnt;
+	    jobn->next = &jobnext;
+	}
+	printf("jobh: %s\n", jobh->line);
+	jidcnt++;
+    }
+}
+
+int main(int argc, char** argv) {
+    if(argc == 1){
+        loop(stdin);
+    }else if(argc == 2){
+    
+    }else{
+        //error
+    }
+    return 0;
+}

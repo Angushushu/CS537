@@ -1,0 +1,40 @@
+ls -a
+.
+..
+
+
+.__afs42B9
+.__afs8F07
+.__afsB879
+CPPLINT.cfg
+cpplint.out
+cpplint.py
+fgetest
+fgetest.c
+file1.txt
+h
+k
+loop
+loop.c
+Makefile
+mysh
+mysh1
+mysh_1.c
+mysh3.c
+mysh.c
+mysh.o
+ok
+oldmysh.c
+output.10
+tester
+tests
+tests-out
+try
+try2
+try2.c
+try.c
+.try.c.swp
+waittest
+waittest.c
+echo "This is the last command"
+"This is the last command"

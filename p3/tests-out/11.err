@@ -1,0 +1,2 @@
+free(): invalid pointer
+tester/run-tests.sh: line 23: 29006 Aborted                 (core dumped) ./mysh tests/11.in

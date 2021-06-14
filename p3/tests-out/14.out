@@ -1,0 +1,4 @@
+sleep 1 &
+wait 0
+JID 0 terminated
+sleep 1 &

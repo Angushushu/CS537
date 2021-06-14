@@ -1,0 +1,48 @@
+#include "types.h"
+#include "stat.h"
+#include "user.h"
+#include "pstat.h"
+
+
+#define DDEBUG 1
+
+#ifdef DDEBUG
+# define DEBUG_PRINT(x) printf x
+#else
+# define DEBUG_PRINT(x) do {} while (0)
+#endif
+
+
+int
+main(int argc, char *argv[])
+{
+  int error = 0;
+  char *args[1];
+  args[0] = "ls";
+
+  int numframes = 130;
+  int* frames = malloc(numframes * sizeof(int));
+  int* pids = malloc(numframes * sizeof(int));
+  int flag = dump_physmem(frames, pids, numframes);
+
+  
+  for (int i = 0; i < numframes; i++) {
+                printf(0,"Frames: %x PIDs: %d\n", *(frames+i), *(pids+i));
+        }
+
+//  int c_pid = fork();
+//  if(c_pid == 0){
+//    	error = exec("ls", args);
+//	for (int i = 0; i < numframes; i++) {
+//          	if(*(pids+i) >-3)
+//            	printf(0,"Frames: %x PIDs: %d\n", *(frames+i), *(pids+i));
+//        }    
+//
+//    if( error == -1 ){
+//    }
+//    exit();
+//  }
+//  kill(c_pid);
+//  wait();
+//  exit();
+}

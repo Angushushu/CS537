@@ -1,0 +1,1 @@
+tester/run-tests.sh: line 23: 29134 Segmentation fault      (core dumped) ./mysh tests/21.in

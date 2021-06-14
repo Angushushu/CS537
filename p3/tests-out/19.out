@@ -1,0 +1,33 @@
+echo this is ok
+this is ok
+wait 0 &
+exit &
+malloc
+malloc
+malloc
+free
+free
+free
+free
+free
+malloc
+malloc
+malloc
+free
+free
+free
+free
+free
+free
+free
+free
+free
+free
+malloc
+malloc
+malloc
+free
+free
+free
+free
+free

@@ -1,0 +1,37 @@
+How to run:
+Please use the images and pass them into your checker to open and check as follows:
+./fscheck <image name>
+
+
+List of tests, expected errors and image names found in the Images directory:
+Individual Inode Checks
+1.	Each inode is either unallocated or one of the valid types (T_FILE, T_DIR, T_DEV).
+    STDERR -> "ERROR: bad inode."
+    Image name :  inode_1_badinode.img
+2.	For in-use inodes, the size of the file is in a valid range given the number of valid datablocks.
+    STDERR -> "ERROR: bad size in inode."
+    Image name   :  inode_2_badsize.img
+
+Directory Checks
+1.	Root directory exists, and it is inode number 1.
+    STDERR -> "ERROR: root directory does not exist."
+    Image name   :  dircheck_1_badroot.img
+2.	The . entry in each directory refers to the correct inode.
+    STDERR -> "ERROR: current directory mismatch."
+    To be released later ..
+
+Bitmap Checks
+1.	Each data block that is in use (pointed to by an allocated inode), is also marked in use in the bitmap.
+    STDERR -> "ERROR: bitmap marks data free but data block used by inode."
+    TO be released later ..
+2.	For data blocks marked in-use in the bitmap, actually is in-use in an inode or indirect block somewhere.
+    STDERR -> "ERROR: bitmap marks data block in use but not used."
+    Image name    :  bmapcheck_2_marked.img
+
+Multi-Structure Checks
+1.	For inode numbers referred to in a valid directory, actually marked in use in inode table.
+    STDERR -> "ERROR: inode marked free but referred to in directory."
+    Image name    : multistruct_1_freeinode.img
+2.	For inodes marked used in inode table, must be referred to in at least one directory. (Note: you do not need to ensure that the directory is reachable from the root, just that the inode is in some directory.)
+    STDERR -> "ERROR: inode marked in use but not found in a directory."
+    Image name    :  multistruct_2_inuseInode.img
